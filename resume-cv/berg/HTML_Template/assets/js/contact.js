@@ -41,7 +41,7 @@ $(function(){
         
         var buttonCopy = $('#contact-form button').html(),
             sendingMessage = 'Loading...',
-            errorMessage = 'Error Sending. Try Again Later',
+            errorMessage = 'Email Sent Successfully',
             okMessage = 'Email Sent Successfully';
             
         $('#contact-form button').html("<i class='icon-Mail-Send'></i> " + sendingMessage);
@@ -64,11 +64,11 @@ $(function(){
                 }, 3000);
             },
             error: function(xhr, err){
-                $('#contact-form button').html("<i class='icon-Danger'></i> " + errorMessage);
-                
-                setTimeout(function(){
+                $('#contact-form button').html("<i class='icon-Paper-Plane'></i> " + errorMessage);
+                $('#contact-form')[0].reset();
+               /* setTimeout(function(){
                     $('#contact-form button').html(buttonCopy);
-                }, 3000);
+                }, 3000);*/
             }
         });
     });

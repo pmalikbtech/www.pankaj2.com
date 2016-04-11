@@ -268,22 +268,22 @@
                         <div class="item col-sm-6 col-md-3">
                             <div class="project-wrapper">
                                 <div class="project-link">
-                                    <a href="assets/images/portfolio/project-image-1.jpg" class="zoom" title="Buzz Lightyear">
+                                    <a href="assets/images/portfolio/project-image-1.jpg" class="zoom" title="Medical Second Opinions" >
                                         <i class="icon-Full-Screen"></i>
                                     </a>
 
-                                    <a href="https://www.behance.net/gallery/25963987/Buzz-Lightyear" target="_blank" class="external-link">
+                                    <a href="http://www.medicalsecondopinions.com/" target="_blank" class="external-link">
                                         <i class="icon-Link"></i>
                                     </a>
                                 </div>
                                 <!-- //.project-link -->
 
                                 <div class="project-title">
-                                    <h4>Buzz Lightyear</h4>
+                                    <h4>Medical Second Opinions</h4>
                                 </div>
                                 <!-- //.project-title -->
 
-                                <img src="assets/images/portfolio/project-image-1.jpg" alt="" class="img-responsive"/>
+                                <img src="assets/images/portfolio/project-image-1.jpg" alt="" class="img-responsive" style="width:397px;max-height:303px" />
                             </div>
                             <!-- //.project-wrapper -->
                         </div>
@@ -1764,7 +1764,7 @@
                     <div class="col-md-8 col-md-offset-2">
 
                         <!-- CONTACT FORM START -->
-                        <form action="contact/send_mail.php" method="post" name="contact-form" id="contact-form" class="contact-form validate" role="form">
+                        <form id="contact-form" role="form"  action="/post" method="POST" class="contact-form validate" >
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
@@ -1872,11 +1872,15 @@
                                 <!-- //.col-md-7 -->
                             </div>
                             <!-- //.row -->
+                             <div class="row">
+                                 <div id="error-form">
 
+                                 </div>
+                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button id="submit" type="submit">Say Hello</button>
+                                        <button id="submit" onclick="validateForm()">Say Hello</button>
                                     </div>
                                     <!-- //.form-group -->
                                 </div>
@@ -1991,7 +1995,23 @@
     <script src="assets/js/animation.js"></script>
     
     <script src="assets/js/switch-style.js"></script>
-    
+    <script>
+
+        function validateForm() {
+            var x = document.forms["contact-form"]["name"].value;
+            var y = document.forms["contact-form"]["email"].value;
+            var z = document.forms["contact-form"]["message"].value;
+            if ((x == null || x == "")||(y == null || y == "")||(z == null || z == "")) {
+                document.getElementById('error-form').innerHTML='<i class="fa fa-warning">&nbsp;Please check all fields';
+                return false;
+            }
+            else{
+                document.getElementById('error-form').innerHTML='';
+                document.forms["contact-form"].submit();
+            }
+
+        }
+    </script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
